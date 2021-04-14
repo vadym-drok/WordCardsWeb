@@ -1,16 +1,12 @@
 {% extends 'main/base.html' %}
 
+<h2> Dictionary page </h2>
 {% block content %}
 
 
 {% for instance in object_list %}
-<p>{{ instance.id }} - <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>
+<p>{{ instance.id }} - <a href="{{ instance.get_absolute_url }}">{{ instance.word }}</a>
 </p>
 {% endfor %}
-
-<p> dictionary
-</p>
-
-
 
 {% endblock  %}

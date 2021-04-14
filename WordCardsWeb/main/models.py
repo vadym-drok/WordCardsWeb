@@ -6,5 +6,5 @@ class Word(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='images/')
     translation = models.TextField()
 
-    def get_absolute_url(self):
-        return reverse('main:word-detail', kwargs={'id':self.id})#f"/products/{self.id}/"
+    # def get_absolute_url(self):
+    #     return reverse('word-detail', kwargs={'id':self.id})#f"/products/{self.id}/"

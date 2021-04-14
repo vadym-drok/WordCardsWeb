@@ -11,16 +11,17 @@ from django.views.generic import (
     DetailView
     )
 
+class WordListView(ListView):
+    template_name = 'main/dictionary.html'
+    queryset = Word.objects.all()
+
 
 class WordCreateView(CreateView):
     template_name = 'main/word_create.html'
     form_class = WordModelForm
     queryset = Word.objects.all()
 
-class WordListView(ListView):
-    template_name = 'main/dictionary.html'
-    queryset = Word.objects.all()
 
 class WordDetailView(DetailView):
     template_name = 'main/word_detail.html'
-    # queryset = Word.objects.all()
+    queryset = Word.objects.all()
