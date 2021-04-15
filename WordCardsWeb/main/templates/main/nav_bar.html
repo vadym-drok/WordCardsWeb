@@ -1,9 +1,12 @@
 <nav>
     <div >
-        <<input type="submit"  value="Main">
-        <<input type="submit"  value="Dictionary">
-        <<input type="submit"  value="About">
-        <<input type="submit"  value="Contacts">
-        <<input type="submit"  value="Logaut">
+
+        <a href="{% url 'main' %}">Main</a>
+        <a href="{% url 'dictionary' %}">Dictionary</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contacts' %}">Contacts</a>
+
+        <a href="{% url 'login' %}">Logaut</a>
+
     </div>
 </nav>
