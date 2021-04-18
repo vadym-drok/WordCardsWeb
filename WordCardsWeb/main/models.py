@@ -9,3 +9,8 @@ class Word(models.Model):
 
     def get_absolute_url(self):
         return reverse('word-detail', kwargs={'pk':self.pk})#f"/products/{self.id}/"
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+
+        super().delete(*args, **kwargs)
