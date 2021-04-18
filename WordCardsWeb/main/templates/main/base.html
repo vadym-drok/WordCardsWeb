@@ -5,10 +5,26 @@
     <title>WordCardsWeb</title>
 </head>
 <body>
-    {% include 'main/nav_bar.html' %}
-    {% block content %}
 
-    {% endblock %}
+    {% if user.is_authenticated %}
+
+      {% include 'main/nav_bar.html' %}
+
+      {% block content %}
+      {% endblock %}
+
+    {% else %}
+    <nav>
+        <div >
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </nav>
+    {% endif  %}
+
+
+
+
 
 </body>
 </html>

@@ -4,6 +4,8 @@ from django.urls import reverse, reverse_lazy
 from .forms import WordModelForm
 
 from django.contrib.auth.views import LoginView
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
 
 from django.views.generic import (
     CreateView,
@@ -15,8 +17,16 @@ from django.views.generic import (
     )
 
 
-class MyRegisterView(TemplateView):
-    pass
+class MyRegisterView(CreateView):
+    template_name = "main/register.html"
+    form_class = UserCreationForm
+    success_url = '/'
+
+
+class WordDeleteView(DeleteView):
+    model = Word
+    template_name = "main/delete_word.html"
+    success_url = '../../'
 
 
 class MyLoginView(LoginView):
@@ -47,9 +57,7 @@ class WordUpdateView(UpdateView):
 class WordCreateView(CreateView):
     template_name = 'main/word_create.html'
     form_class = WordModelForm
-
     success_url = '/dictionary/'
-
 
 
 class WordDetailView(DetailView):
