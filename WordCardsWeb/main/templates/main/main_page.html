@@ -5,5 +5,15 @@
 <p>Main Page</p>
 
 
+{% for instance in object %}
+
+<p> {{ instance.word }}
+  - <img src='{{ instance.image.url }}' width="200" height="200" alt="none">
+  - {{ instance.translation }}
+
+</p>
+{% endfor %}
+
+<a href="{% url 'main' %}">New Word</a>
 
 {% endblock  %}

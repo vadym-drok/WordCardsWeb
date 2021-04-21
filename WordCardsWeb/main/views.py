@@ -17,6 +17,21 @@ from django.views.generic import (
     )
 
 
+import random
+
+def MainView(request):
+    queryset = list(Word.objects.all())
+    one_query = random.sample(queryset,1)
+    context = {
+        'object':one_query
+    }
+    return render(request, 'main/main_page.html', context)
+
+# class MainView(TemplateView):
+#     template_name = "main/main_page.html"
+
+
+
 class MyRegisterView(CreateView):
     template_name = "main/register.html"
     form_class = UserCreationForm
@@ -37,9 +52,6 @@ class AboutView(TemplateView):
 
 class ContactsView(TemplateView):
     template_name = "main/contacts.html"
-
-class MainView(TemplateView):
-    template_name = "main/main_page.html"
 
 
 class WordListView(ListView):

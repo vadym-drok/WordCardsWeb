@@ -17,7 +17,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('main/', MainView.as_view(), name='main'),
+    path('main/', MainView, name='main'),
+    # path('main/', MainView.as_view(), name='main'),
 
     path('register/', MyRegisterView.as_view(), name='register'),
     path('login/', MyLoginView.as_view(), name='login'),
