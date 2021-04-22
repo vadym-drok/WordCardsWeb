@@ -5,15 +5,21 @@
 
 {% block content %}
 <h2> Dictionary page </h2>
+<p>The number of words in the dictionary: <b>{{ len_dict }}</b></p>
 
-<a href="{% url 'word-create' %}">Add new Word</a>
-
+<form action="." method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form1.as_p }}
+    <input type="submit" value="Save" />
+</form>
 
 {% for instance in object_list %}
 <p>{{ instance.id }} - <a href="{{ instance.get_absolute_url }}">{{ instance.word }}</a>
   <a href="{% url 'word-delete' instance.pk %}">Delete</a>
   <a href="{% url 'word-update' instance.pk %}">Update</a>
 </p>
+
 {% endfor %}
 
 {% endblock  %}
+<!-- <a href="{% url 'word-create' %}">Add new Word</a> -->
