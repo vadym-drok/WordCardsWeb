@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<p>Main Page</p>
+<p class="test_style">Main Page</p>
 
 
 {% for instance in object %}
@@ -14,6 +14,6 @@
 </p>
 {% endfor %}
 
-<a href="{% url 'main' %}">New Word</a>
+<a href="{% url 'main' %}">Random Word</a>
 
 {% endblock  %}

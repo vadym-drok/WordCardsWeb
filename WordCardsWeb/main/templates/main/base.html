@@ -1,11 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type= "text/css" href="{% static '/css/styles.css' %}">
     <title>WordCardsWeb</title>
 </head>
 <body>
-
+    <!-- Nav Bar -->
+    <div class="">
     {% if user.is_authenticated %}
 
       {% include 'main/nav_bar.html' %}
@@ -21,10 +25,6 @@
         </div>
     </nav>
     {% endif  %}
-
-
-
-
-
+    </div>
 </body>
 </html>

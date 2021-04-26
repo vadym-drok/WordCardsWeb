@@ -26,7 +26,7 @@ urlpatterns = [
     path('register/', MyRegisterView.as_view(), name='register'),
     path('login/', MyLoginView.as_view(), name='login'),
 
-    path('ubaut/', AboutView.as_view(), name='about'),
+    path('abaut/', AboutView.as_view(), name='about'),
     path('contacts/', ContactsView.as_view(), name='contacts'),
     path('dictionary/', list_and_create, name='dictionary'),
 

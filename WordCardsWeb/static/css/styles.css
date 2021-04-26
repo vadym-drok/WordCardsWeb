@@ -1,0 +1,29 @@
+body {
+  background-color: #F8EFD4;
+}
+
+
+.dic_main_section {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.dic_list {
+  color: #000;
+  font-weight: bold;
+  overflow: scroll; /* Добавляем полосы прокрутки */
+  width: 300px; /* Ширина блока */
+  height: 450px; /* Высота блока */
+  padding: 5px; /* Поля вокруг текста */
+  border: solid 1px black; /* Параметры рамки */
+}
+
+.nav_bar {
+
+}
+
+.nav_bar_link {
+  font-weight: bold;
+  color: #fb6d3a;
+}
