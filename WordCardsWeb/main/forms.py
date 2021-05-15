@@ -8,7 +8,7 @@ class WordModelForm(forms.ModelForm):
         required=False,
 
         widget=forms.Textarea(
-            attrs={
+            attrs={                
                 "placeholder": "Enter word explanations",
                 'class': "taxt_area_form",
                 'rows':4,

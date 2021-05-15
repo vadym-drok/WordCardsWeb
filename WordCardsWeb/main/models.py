@@ -7,6 +7,7 @@ class Word(models.Model):
     upload_to='../images/', default='../images/default.jpg', blank=True
     )
     translation = models.CharField(max_length=500)
+    right_ansver = models.DecimalField(max_digits = 2, decimal_places = 0, default=0)
 
     def __str__(self):
         return self.word
@@ -19,5 +20,11 @@ class Word(models.Model):
         super().delete(*args, **kwargs)
 
     def delete_def(self, *args, **kwargs):
-
         super().delete(*args, **kwargs)
+
+
+class Ansver(models.Model):
+    num = models.DecimalField(max_digits = 2, decimal_places = 0, default=0)
+
+    def __str__(self):
+        return   ' %s' % self.num

@@ -1,20 +1,73 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<script src='../../../static/js/main.js'></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
 
-<p class="test_style">Main Page</p>
+<script type="text/javascript">
+var words = JSON.parse('{{ words | safe }}')
+$(function (){
+  function random_word(){
+    
+    time = 1;  //updating the StomWatch
+    var item = words[Math.floor(Math.random()*words.length)]
+    var item_w = item['fields']['word']
+    var item_img = item['fields']['image']
+    var item_description = item['fields']['translation']
 
+    var item_right_ansver = item['fields']['right_ansver']
+    console.log(Number(item_right_ansver)  + 1)
 
-{% for instance in object %}
+    $('#random_word').text(item_w);
+    $('#btn_img').click(function(){
+      $('#r_word_img').html('<img src="'+item_img+'" width="200" height="200" alt="none">');
+    })
+    $('#btn_description').click(function(){
+      $('#r_word_description').text(item_description);
+    }) 
+  }
+  $('#btn_random_word').click(function(){
+    $('#r_word_description').text("");
+    $('#r_word_img').text("");
+    random_word();
+  });
+  random_word();
+});
 
-<p> {{ instance.word }}
-  - <img src='{{ instance.image.url }}' width="200" height="200" alt="none">
-  - {{ instance.translation }}
+// StopWath
+var time = 1;
+function stopWatch() {
+    const minutes = Math.floor(time/60);
+    let seconds = time %60;
+    seconds = seconds<10 ? '0' + seconds : seconds;
+    document.querySelector('.stop_watch').textContent = `${minutes}:${seconds}`;
+    time++;
+  }
+// const createStopWatch = setInterval(stopWatch, 1000);
 
-</p>
-{% endfor %}
+</script>
 
-<a href="{% url 'main' %}">Random Word</a>
+<div class="container">
+  <h3 >Main Page</h3>
+  <div class="">
+    <button type="button" class="btn btn-success" id="right_btn" > Right </button> 
+    <button type="button" class="btn btn-danger"> Wrong </button>
+  </div>
+  <div class="">
 
+    <p id="random_word"> </p>
+    <div id="r_word_img"></div>
+    <div id="r_word_description"></div>
 
+  </div>
+  <div class="">
+      <button type="button" class="btn btn-primary" id="btn_random_word"> Random Word </button>
+      <button type="button" class="btn btn-primary" id="btn_img"> Image </button>
+      <button type="button" class="btn btn-primary" id="btn_description"> Description </button>
+  </div>
+
+  <div class="">
+    <p class="stop_watch">0:00</p>
+  </div>
+</div>
 {% endblock  %}

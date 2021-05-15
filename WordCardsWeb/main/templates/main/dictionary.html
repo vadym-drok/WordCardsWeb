@@ -2,23 +2,27 @@
 {% block content %}
 
 <h2> Dictionary page </h2>
-
+<script src='../../../static/js/main.js'></script>
 
 <form action="." method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form1.word }}
     {{ form1.image }}
     {{ form1.translation }}
-    <p><input type="submit" value="Add Word" /></p>
+    <p><input type="submit" value="Add Word"/></p>
+
 </form>
     <div class="dic_main_section">
       <div class="dic_list">
-        {% for instance in object_list %}
-          <p>{{ instance.id }} - <a href="{{ instance.get_absolute_url }}">{{ instance.word }}</a>
-          <a href="{% url 'word-delete' instance.pk %}">Delete</a>
-          <a href="{% url 'word-update' instance.pk %}">Update</a>
-        </p>
-        {% endfor %}
+         <ul class="list-group">
+          {% for instance in object_list %}
+                <li class="list-group-item">
+                  <a href="{{ instance.get_absolute_url }}">{{ instance.word }}</a>
+                  <a class="btn btn-primary" href="{% url 'word-update' instance.pk %}" role="button">Update</a>
+                   <button  onclick="delete_w_JS({{instance.pk}})" class="btn btn-primary">Delete</button>
+                </li>
+          {% endfor %}
+        </ul>
       </div>
       <div class="">
         <div class="">
@@ -28,10 +32,9 @@
           Rights answers
           <input type="text" name="right_number" />
         </div>
+
       </div>
     </div>
 
 
 {% endblock  %}
-<!-- <a href="{% url 'word-create' %}">Add new Word</a> -->
-  <!-- {{ form1.as_p }} -->

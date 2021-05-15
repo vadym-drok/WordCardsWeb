@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+   <meta charset="utf-8">
+   <title>Simple setInterval clock</title>
+   <style>
+     p {
+       font-family: sans-serif;
+     }
+   </style>
+ </head>
+ <body>
+   <p class="clock"></p>
+   <p id="countdownt"></p>
+   <script>
+     // function displayTime() {
+     //   let date = new Date();
+     //   let time = date.toLocaleTimeString();
+     //   document.querySelector('.clock').textContent = time;
+     // }
+     //
+     // // displayTime();
+     // const createClock = setInterval(displayTime, 1000);
+
+     let time = 1;
+     function displayTime() {
+       const minutes = Math.floor(time/60);
+       let seconds = time %60;
+       seconds = seconds<10 ? '0' + seconds : seconds;
+       document.querySelector('.clock').textContent = `${minutes}:${seconds}`;
+       time++;
+     }
+
+     // displayTime();
+     const createClock = setInterval(displayTime, 1000);
+
+
+
+   </script>
+ </body>
+</html>
